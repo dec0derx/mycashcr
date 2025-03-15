@@ -3,13 +3,10 @@ import openai
 
 def check_exchange_rate(historical_exchange_rate_buy):
 
-    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-    print(OPENAI_API_KEY)
-    
+    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")    
 
     if not OPENAI_API_KEY:
         return "Insights are not available today."
-
 
     client = openai.OpenAI(api_key=OPENAI_API_KEY) 
 
