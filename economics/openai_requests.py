@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import os
 import openai
 
@@ -12,6 +13,12 @@ def check_exchange_rate(historical_exchange_rate_buy):
 
 
     client = openai.OpenAI(api_key=OPENAI_API_KEY) 
+=======
+import openai
+
+def check_exchange_rate(historical_exchange_rate_buy):
+    client = openai.OpenAI(api_key="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")  # Replace with your actual API key
+>>>>>>> 4c70642439bee050c1ff6c410ad749fd9ebf45c8
 
     response = client.chat.completions.create(
         model="gpt-4o",
