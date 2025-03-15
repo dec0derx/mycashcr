@@ -14,6 +14,7 @@ def indicators(request):
     historical_exchange_rate_buy = get_historical_exchange_rate_buy()
     usd_reserves = get_usd_reserves()
     
+    # Analyze with AI
 
     # Get the current date
     current_date = timezone.now().date()
