@@ -1,0 +1,282 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Winiker's Page</title>
+<style>
+  body {
+    font-family: Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  header {
+    background-color: #1A2954;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+  nav {
+    display: flex;
+    justify-content: center;
+  }
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  section {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .info-section {
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    text-align: center;
+  }
+  .indicators-section {
+    border-radius: 5px;
+    text-align: center;
+  }
+  .indicators-summary {
+    text-align: left; /* Align text to the left */
+  }
+  #apps-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
+  }
+  .container {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    transition: background-color 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .container a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .container:hover {
+    background-color: #f9f9f9;
+    cursor: pointer;
+  }
+  footer {
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    margin-top: auto;
+  }
+  #contact-section {
+    margin-bottom: -20px;
+  }
+  header a {
+    color: inherit;
+    text-decoration: none;
+  }
+  header a:hover {
+    color: inherit;
+    text-decoration: none;
+  }
+  .paypal-button {
+    width: 180px;
+  }
+  .app-image {
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+  }
+  .table-container {
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+    margin: 20px auto;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+  }
+  .table-container th, .table-container td {
+    border: 1px solid #e1e1e1;
+    padding: 10px;
+    text-align: left;
+    font-size: 14px;
+  }
+  .table-container th {
+    background-color: #4a69bd;
+    color: #ffffff;
+    font-size: 16px;
+  }
+  .table-container tr:nth-child(even) {
+    background-color: #f8f9fa;
+  }
+  #exchange-sell-table tbody tr:first-child,
+  #exchange-buy-table tbody tr:first-child {
+    background-color: #78e08f;
+  }
+  .table-container > div {
+    width: 50%;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="{% url "index" %}">
+    <h1>Franz's Page</h1>
+  </a>
+  <nav>
+    <a href="{% url "loan-Calculations" %}">Calculo de Cuotas</a>
+    <a href="{% url "exchange-rate" %}">Tipo de Cambio</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
+
+<section class="info-section" id="info-section">
+  <h2>Indicadores Economicos</h2>
+  <p>En Construccion</p>
+</section>
+
+<article class="indicators-section">
+  <h2>Tipo de Cambio BCCR</h2>
+  <div class="table-container">
+
+
+    <div>
+      <table id="exchange-sell-table">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Venta</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for exchange_rate in historical_exchange_rate_sell %}
+          {% if forloop.first %}
+            <tr>
+              {% for date_exchange_rate in exchange_rate %}
+                <td>{{ date_exchange_rate }}</td>
+              {% endfor %}
+            </tr>
+          {% endif %}
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <table id="exchange-buy-table">
+        <thead>
+          <tr>
+            <th>Compra</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for exchange_rate in historical_exchange_rate_buy %}
+          {% if forloop.first %}
+            <tr>
+              {% for date_exchange_rate in exchange_rate %}
+                <td>{{ date_exchange_rate }}</td>
+              {% endfor %}
+            </tr>
+          {% endif %}
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <canvas id="exchangeRateChart"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        let labels = [];
+        let dataPoints = [];
+        {% for exchange_rate in historical_exchange_rate_sell %}
+          labels.push("{{ exchange_rate.0 }}");
+          dataPoints.push({{ exchange_rate.1 }});
+        {% endfor %}
+        labels.reverse();
+        dataPoints.reverse();
+        const ctx = document.getElementById("exchangeRateChart").getContext("2d");
+        new Chart(ctx, {
+          type: "line",
+          data: {
+            labels: labels,
+            datasets: [{
+              label: "Historical Exchange Rate",
+              data: dataPoints,
+              borderColor: "blue",
+              fill: false
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              x: { title: { display: true, text: "Date" } },
+              y: { title: { display: true, text: "Exchange Rate" } }
+            }
+          }
+        });
+      });
+    </script>
+    <article class="indicators-summary">
+      <h2>Exchange Rate Summary</h2>
+      {{ exchange_rate_summary|safe}}
+    </article>
+
+  </div>
+</article>
+
+<article class="indicators-section">
+  <h2>Reservas BCCR</h2>
+  <div class="table-container">
+    <table id="bccr-reserves">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Venta</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for reserve in usd_reserves %}
+          <tr>
+            {% for usd in reserve %}
+              <td>{{ usd }}</td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</article>
+
+<section class="info-section" id="contact-section">
+  <h2>Contact Us</h2>
+  <p>For any inquiries, please contact us at:</p>
+  <p>Email: example@example.com</p>
+  <p>Phone: +1234567890</p>
+  <form action="https://www.paypal.com/donate" method="post" target="_top">
+    {% csrf_token %}
+    <input type="hidden" name="hosted_button_id" value="DDHHZEY2U6YHN" />
+    <input class="paypal-button" type="image" src="https://pics.paypal.com/00/s/MGE4OGE1ODEtNzAyOS00YTAxLTlhMmQtNWI5NmVhZDZiNDRj/file.PNG" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+    <img alt="" border="0" src="https://www.paypal.com/en_CR/i/scr/pixel.gif" width="1" height="1" />
+  </form>
+</section>
+
+<footer>
+  <p>&copy; 2024 Derechos Reservados</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,181 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Winiker's Page</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  header {
+    background-color: #1A2954;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+  nav {
+    display: flex;
+    justify-content: center;
+  }
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  section {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .info-section {
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    text-align: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  #apps-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
+  }
+  footer {
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    margin-top: auto;
+  }
+  .form-container {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .form-container button {
+    width: 100%;
+    margin: 5px 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    background-color: #3498DB;
+    color: white;
+
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .form-container button:hover {
+    background-color: #2980B9;
+  }
+  @media screen and (min-width: 768px) {
+    .form-container {
+      width: 50%;
+    }
+  }
+  .form-container label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  .form-container input[type="number"] {
+    width: calc(100% - 22px); /* Adjust width to include padding and border */
+    padding: 8px; /* Increased padding for a better look */
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px; /* Larger font size for better readability */
+  }
+
+  .result-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="{% url 'index' %}">
+    <h1>Franz's Page</h1>
+  </a>
+  <nav>
+    <a href="{% url 'loan-Calculations' %}">Calculo de Cuotas</a>
+    <a href="{% url 'exchange-rate' %}">Tipo de Cambio</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
+
+<section class="info-section" id="info-section">
+  <h2>Sobre este sitio</h2>
+  <p>En Construccion</p>
+</section>
+
+<section id="apps-section">
+  <div class="form-container">
+    <form action="/loanCalculations/loanCalculations" method="post">
+      {% csrf_token %}
+      <div>
+        <label for="loan_amount">Monto Principal:</label>
+        <input type="number" id="loan_amount" name="loan_amount" required>
+      </div>
+      <div>
+        <label for="interest_rate">Tasa de Interés:</label>
+        <input type="number" id="interest_rate" name="interest_rate" required>
+      </div>
+      <div>
+        <label for="months">Plazo en Meses:</label>
+        <input type="number" id="months" name="months" required>
+      </div>
+      <div>
+        <button type="submit">Calcular Cuota</button>
+      </div>
+      <div>
+        {% for result in results %}
+
+
+          <h1>La cuota mensual de tu préstamo es de:</h1>
+          <h2>{{ result }}</h2>
+
+
+      {% endfor %}
+
+      </div>
+    </form>
+  </div>
+</section>
+
+
+<section class="info-section" id="contact-section">
+  <h2>Contact Us</h2>
+  <p>For any inquiries, please contact us at:</p>
+  <p>Email: example@example.com</p>
+  <p>Phone: +1234567890</p>
+  <form action="https://www.paypal.com/donate" method="post" target="_top">
+    {% csrf_token %}
+    <input type="hidden" name="hosted_button_id" value="DDHHZEY2U6YHN" />
+    <input class="paypal-button" type="image" src="https://pics.paypal.com/00/s/MGE4OGE1ODEtNzAyOS00YTAxLTlhMmQtNWI5NmVhZDZiNDRj/file.PNG" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+    <img alt="" border="0" src="https://www.paypal.com/en_CR/i/scr/pixel.gif" width="1" height="1" />
+  </form>
+</section>
+
+<footer>
+  <p>&copy; 2024 Derechos Reservados</p>
+</footer>
+
+</body>
+</html>

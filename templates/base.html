@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Header with Links and Post Form</title>
+<style>
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  form {
+    margin: 20px auto;
+    width: 300px;
+    padding: 50px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  form div {
+    margin-bottom: 15px;
+  }
+  form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  form input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  form button:hover {
+    background-color: #0056b3;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="{% url "loan-Calculations" %}">Loan Calculation</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+  </nav>
+</header>
+
+
+{% block content %}{% endblock %}
+
+
+
+</body>
+</html>
+
+
+</body>
+</html>
