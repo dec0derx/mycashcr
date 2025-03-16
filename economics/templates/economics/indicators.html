@@ -16,9 +16,9 @@
     min-height: 100vh;
   }
   header {
-    background-color: #1A2954;
+    background-color: #2C3E50;
     color: #fff;
-    padding: 10px;
+    padding: 20px 0;
     text-align: center;
   }
   nav {
@@ -134,33 +134,28 @@
 </head>
 <body>
 
-<header>
-  <a href="{% url "index" %}">
-    <h1>Franz's Page</h1>
-  </a>
-  <nav>
-    <a href="{% url "loan-Calculations" %}">Calculo de Cuotas</a>
-    <a href="{% url "exchange-rate" %}">Tipo de Cambio</a>
-    <a href="#about">About</a>
-  </nav>
-</header>
+  <header>
+    <a href="{% url "index" %}">
+      <h1>REXA</h1>
+    </a>
+    <nav>
+      <a href="{% url "economics" %}">Indicadores</a>
+      <a href="{% url "exchange-rate" %}">Tipo de Cambio(Bancos)</a>
+      <a href="{% url "loan-Calculations" %}">Calculo de Cuotas</a>
+  
+    </nav>
+  </header>
 
-<section class="info-section" id="info-section">
-  <h2>Indicadores Economicos</h2>
-  <p>En Construccion</p>
-</section>
 
 <article class="indicators-section">
-  <h2>Tipo de Cambio BCCR</h2>
+  <h2>Data from CR Central Bank</h2>
   <div class="table-container">
-
-
     <div>
       <table id="exchange-sell-table">
         <thead>
           <tr>
-            <th>Fecha</th>
-            <th>Venta</th>
+            <th>Date</th>
+            <th>Sell</th>
           </tr>
         </thead>
         <tbody>
@@ -180,7 +175,7 @@
       <table id="exchange-buy-table">
         <thead>
           <tr>
-            <th>Compra</th>
+            <th>Buy</th>
           </tr>
         </thead>
         <tbody>
