@@ -99,10 +99,9 @@
     <h1>xRates 🇨🇷</h1>
   </a>
   <nav>
-    <a href="{% url "economics" %}">Indicadores</a>
-    <a href="{% url "exchange-rate" %}">Tipo de Cambio(Bancos)</a>
-    <a href="{% url "loan-Calculations" %}">Calculo de Cuotas</a>
-
+    <a href="{% url "economics" %}">Indicators</a>
+    <a href="{% url "exchange-rate" %}">Exchange Rate (Banks)</a>
+    <a href="{% url "loan-Calculations" %}">Loan Calculations</a>
   </nav>
 </header>
 
@@ -115,51 +114,49 @@
 <section id="apps-section">
   <div class="container">
     <a href="{% url "economics" %}">
-      <h2>Indicadores Economicos</h2>
-      <img class="app-image" src="{% static "index/images/banking.png" %}" alt="Indicadores Economicos"/>
-      <p>Seguimiento a los indicadores economicos del Banco Central de Costa Rica.</p>
+      <h2>Economic Indicators</h2>
+      <img class="app-image" src="{% static "index/images/banking.png" %}" alt="Economic Indicators"/>
+      <p>Tracking the economic indicators of the Central Bank of Costa Rica.</p>
     </a>
   </div>
   <div class="container">
     <a href="{% url "exchange-rate" %}">
-      <h2>Tipo de Cambio</h2>
-      <img class="app-image" src="{% static "index/images/exchange_rate.png" %}" alt="Tipo de Cambio (Banca Comercial)"/>
-      <p>Tipo de cambio del dolar en las diferentes entidades financieras de Costa Rica.</p>
+      <h2>Exchange Rate</h2>
+      <img class="app-image" src="{% static "index/images/exchange_rate.png" %}" alt="Exchange Rate (Commercial Banks)"/>
+      <p>Dollar exchange rate in the different financial entities of Costa Rica.</p>
     </a>
   </div>
   <div class="container">
     <a href="{% url "loan-Calculations" %}">
-      <h2>Calculo de Cuotas</h2>
-      <img class="app-image" src="{% static "index/images/loan_calculator.jpg" %}" alt="Calculadora de Cuotas"/>
-      <p>Calcula la cuota mensual de tu prestamo segun el monto, tasa de interes anual y plazo en meses.</p>
+      <h2>Loan Calculations</h2>
+      <img class="app-image" src="{% static "index/images/loan_calculator.jpg" %}" alt="Loan Calculator"/>
+      <p>Calculate your monthly loan payment based on the amount, annual interest rate, and term in months.</p>
     </a>
   </div>
   <!--
   <div class="container">
     <a href="{% url "salary-calculator" %}">
-      <h2>Calculadora Salarial</h2>
+      <h2>Salary Calculator</h2>
       <img class="app-image" src="{% static "index/images/salary.png" %}" alt="Mountain Hiking"/>
-      <p>Calcula tu Salario Neto.</p>
+      <p>Calculate your Net Salary.</p>
     </a>
   </div>
   -->
 </section>
 
 <section class="info-section" id="contact-section">
-  <h2>Contacto - Comentarios</h2>
-  <p>Para comentarios o preguntas dirigirse puede hacer click aqui.</p>
+  <h2>Contact - Comments</h2>
+  <p>For comments or questions, you can click here.</p>
   <form action="https://www.paypal.com/donate" method="post" target="_top">
     {% csrf_token %}
     <input type="hidden" name="hosted_button_id" value="DDHHZEY2U6YHN" />
     <input class="paypal-button" type="image" src="https://pics.paypal.com/00/s/MGE4OGE1ODEtNzAyOS00YTAxLTlhMmQtNWI5NmVhZDZiNDRj/file.PNG" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
     <img alt="" border="0" src="https://www.paypal.com/en_CR/i/scr/pixel.gif" width="1" height="1" />
   </form>
-    
-    
 </section>
 
 <footer>
-  <p>&copy; 2024 Derechos Reservados</p>
+  <p>&copy; 2024 All Rights Reserved</p>
 </footer>
 
 </body>
