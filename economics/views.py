@@ -4,7 +4,7 @@ import xml.etree.ElementTree as ET
 from xml.dom import minidom
 import requests
 from datetime import datetime, timedelta
-from . import openai_requests
+from utils import openai_requests
 from .models import ExchangeRateSummary
 
 # Create your views here.

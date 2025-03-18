@@ -1,0 +1,64 @@
+  section {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .indicators-section {
+    border-radius: 5px;
+    text-align: center;
+  }
+  .indicators-summary {
+    text-align: left; /* Align text to the left */
+  }
+  .container {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    transition: background-color 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .container a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .container:hover {
+    background-color: #f9f9f9;
+    cursor: pointer;
+  }
+  .table-container {
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+    margin: 20px auto;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+  }
+  .table-container th, .table-container td {
+    border: 1px solid #e1e1e1;
+    padding: 10px;
+    text-align: left;
+    font-size: 14px;
+  }
+  .table-container th {
+    background-color: #4a69bd;
+    color: #ffffff;
+    font-size: 16px;
+  }
+  .table-container tr:nth-child(even) {
+    background-color: #f8f9fa;
+  }
+  #exchange-sell-table tbody tr:first-child,
+  #exchange-buy-table tbody tr:first-child {
+    background-color: #78e08f;
+  }
+  .table-container > div {
+    width: 50%;
+  }
