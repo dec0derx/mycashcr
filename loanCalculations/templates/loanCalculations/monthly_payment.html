@@ -3,109 +3,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Winiker's Page</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  header {
-    background-color: #1A2954;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-  }
-  nav {
-    display: flex;
-    justify-content: center;
-  }
-  nav a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 10px;
-  }
-  section {
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  .info-section {
-    background-color: #f2f2f2;
-    border-radius: 5px;
-    text-align: center;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-  }
-  #apps-section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-gap: 20px;
-  }
-  footer {
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-    margin-top: auto;
-  }
-  .form-container {
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    margin: 0 auto;
-  }
-
-  .form-container button {
-    width: 100%;
-    margin: 5px 0 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 10px;
-    background-color: #3498DB;
-    color: white;
-
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .form-container button:hover {
-    background-color: #2980B9;
-  }
-  @media screen and (min-width: 768px) {
-    .form-container {
-      width: 50%;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loan Calculator - Franz's Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
-  }
-  .form-container label {
-    display: block;
-    margin-bottom: 10px;
-  }
-  .form-container input[type="number"] {
-    width: calc(100% - 22px); /* Adjust width to include padding and border */
-    padding: 8px; /* Increased padding for a better look */
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    font-size: 16px; /* Larger font size for better readability */
-  }
+    header {
+      background-color: #1A2954;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    section {
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .info-section {
+      background-color: #f2f2f2;
+      border-radius: 5px;
+      text-align: center; /* Align text to center */
+    }
+    #apps-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-gap: 20px;
+    }
+    .container {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 20px;
+      transition: background-color 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .container a {
+      color: inherit; /* Override default link color */
+      text-decoration: none; /* Remove underline */
+    }
+    .container:hover {
+      background-color: #f9f9f9;
+      cursor: pointer;
+    }
+    footer {
+      background-color: black;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      margin-top: auto;
+    }
+    #contact-section {
+      margin-bottom: -20px; /* Adjust to match footer margin */
+    }
 
-  .result-container {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    margin-top: 20px;
-    font-family: Arial, sans-serif;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-</style>
+    header a {
+      color: inherit; /* Use the color defined for the header */
+      text-decoration: none; /* Remove underline */
+    }
+
+    header a:hover {
+      color: inherit; /* Use the color defined for the header */
+      text-decoration: none; /* Remove underline */
+    }
+
+    .paypal-button {
+      width: 180px;
+    }
+    .app-image {
+      width: 5rem;
+      height: 5rem;
+      object-fit: cover;
+    }
+
+    /* Styling for the loan calculator */
+    .loan-calculator {
+      background-color: #f9f9f9;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+      width: 100%;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+
+    .loan-calculator h2 {
+      text-align: center;
+      color: #1A2954;
+    }
+
+    .loan-calculator label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .loan-calculator input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    .loan-calculator #result {
+      text-align: center;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+  </style>
 </head>
 <body>
 
@@ -114,52 +139,33 @@
     <h1>Franz's Page</h1>
   </a>
   <nav>
-    <a href="{% url 'loan-Calculations' %}">Calculo de Cuotas</a>
-    <a href="{% url 'exchange-rate' %}">Tipo de Cambio</a>
+    <a href="{% url 'loan-Calculations' %}">Loan Calculations</a>
+    <a href="{% url 'exchange-rate' %}">Exchange Rate</a>
     <a href="#about">About</a>
   </nav>
 </header>
 
 <section class="info-section" id="info-section">
-  <h2>Sobre este sitio</h2>
-  <p>En Construccion</p>
+  <h2>About this site</h2>
+  <p>Under Construction</p>
 </section>
 
-<section id="apps-section">
-  <div class="form-container">
-    <form action="/loanCalculations/loanCalculations" method="post">
-      {% csrf_token %}
-      <div>
-        <label for="loan_amount">Monto Principal:</label>
-        <input type="number" id="loan_amount" name="loan_amount" required>
-      </div>
-      <div>
-        <label for="interest_rate">Tasa de Interés:</label>
-        <input type="number" id="interest_rate" name="interest_rate" required>
-      </div>
-      <div>
-        <label for="months">Plazo en Meses:</label>
-        <input type="number" id="months" name="months" required>
-      </div>
-      <div>
-        <button type="submit">Calcular Cuota</button>
-      </div>
-      <div>
-        {% for result in results %}
+<!-- Loan Calculator Section -->
+<section class="loan-calculator">
+  <h2>Loan Calculator</h2>
+  <label for="loanAmount">Loan Amount ($):</label>
+  <input type="number" id="loanAmount" placeholder="Enter loan amount" oninput="calculateLoan()"/>
 
+  <label for="interestRate">Annual Interest Rate (%):</label>
+  <input type="number" id="interestRate" placeholder="Enter interest rate" oninput="calculateLoan()"/>
 
-          <h1>La cuota mensual de tu préstamo es de:</h1>
-          <h2>{{ result }}</h2>
+  <label for="loanTerm">Loan Term (years):</label>
+  <input type="number" id="loanTerm" placeholder="Enter loan term" oninput="calculateLoan()"/>
 
-
-      {% endfor %}
-
-      </div>
-    </form>
-  </div>
+  <div id="result"></div>
 </section>
 
-
+<!-- Contact Us Section -->
 <section class="info-section" id="contact-section">
   <h2>Contact Us</h2>
   <p>For any inquiries, please contact us at:</p>
@@ -174,8 +180,27 @@
 </section>
 
 <footer>
-  <p>&copy; 2024 Derechos Reservados</p>
+  <p>&copy; 2024 All Rights Reserved</p>
 </footer>
+
+<script>
+  function calculateLoan() {
+    const loanAmount = parseFloat(document.getElementById('loanAmount').value);
+    const interestRate = parseFloat(document.getElementById('interestRate').value) / 100 / 12;
+    const loanTerm = parseFloat(document.getElementById('loanTerm').value) * 12;
+
+    if (isNaN(loanAmount) || isNaN(interestRate) || isNaN(loanTerm) || loanAmount <= 0 || interestRate <= 0 || loanTerm <= 0) {
+      document.getElementById('result').innerHTML = 'Please enter valid numbers for all fields.';
+      return;
+    }
+
+    // Monthly Payment formula
+    const monthlyPayment = (loanAmount * interestRate) / (1 - Math.pow(1 + interestRate, -loanTerm));
+
+    // Display the result
+    document.getElementById('result').innerHTML = `Your monthly payment is: $${monthlyPayment.toFixed(2)}`;
+  }
+</script>
 
 </body>
 </html>
