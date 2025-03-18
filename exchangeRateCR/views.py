@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 
 def exchange_rate(request):
     banks_exchange_rate_dictionary = get_commercial_banks_exchange_rate()
+    print(banks_exchange_rate_dictionary)
     args = {'banks_exchange_rate_dictionary': banks_exchange_rate_dictionary}
     return render(request, "exchangeRateCR/exchange_rate.html", args)
 
