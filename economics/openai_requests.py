@@ -12,7 +12,7 @@ def check_exchange_rate(historical_exchange_rate_buy):
 
     response = client.chat.completions.create(
         model="gpt-4o",
-        messages=[{"role": "user", "content": "Please analyze the trends in the exchange rate. This will embedded in HTML so please use <p> and embedded subtitles in bold. Don't include anything other than <p> and <b> tags. " + str(historical_exchange_rate_buy)}]
+        messages=[{"role": "user", "content": "Please analyze the latest news of exchange rate in Costa Rica and provide somehighlights. This will embedded in HTML so please use <p> and embedded subtitles in bold. Don't include anything other than <p> and <b> tags. " + str(historical_exchange_rate_buy)}]
     )
     
     return response.choices[0].message.content
