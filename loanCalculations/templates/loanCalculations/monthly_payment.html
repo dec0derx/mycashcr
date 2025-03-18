@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Loan Calculator - Franz's Page</title>
+  <title>Iguana Rate 🇨🇷</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -16,10 +16,18 @@
       min-height: 100vh;
     }
     header {
-      background-color: #1A2954;
+      background-color: #2C3E50;
       color: #fff;
-      padding: 10px;
+      padding: 20px 0;
       text-align: center;
+    }
+    header a, header a:visited {
+      color: #fff; /* Keeps the header text color white even after being visited */
+      text-decoration: none;
+    }
+  
+    header a:hover {
+      color: #fff; /* Ensures the color remains white on hover as well */
     }
     nav {
       display: flex;
@@ -134,21 +142,16 @@
 </head>
 <body>
 
-<header>
-  <a href="{% url 'index' %}">
-    <h1>Franz's Page</h1>
-  </a>
-  <nav>
-    <a href="{% url 'loan-Calculations' %}">Loan Calculations</a>
-    <a href="{% url 'exchange-rate' %}">Exchange Rate</a>
-    <a href="#about">About</a>
-  </nav>
-</header>
-
-<section class="info-section" id="info-section">
-  <h2>About this site</h2>
-  <p>Under Construction</p>
-</section>
+  <header>
+    <a href="{% url "index" %}">
+      <h1>Iguana Rate 🇨🇷</h1>
+    </a>
+    <nav>
+      <a href="{% url "economics" %}">Indicators</a>
+      <a href="{% url "exchange-rate" %}">Exchange Rate (Banks)</a>
+      <a href="{% url "loan-Calculations" %}">Loan Calculations</a>
+    </nav>
+  </header>
 
 <!-- Loan Calculator Section -->
 <section class="loan-calculator">
