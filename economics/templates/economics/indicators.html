@@ -5,26 +5,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Iguana Rate 🇨🇷</title>
+<title>flipmybucks 🇨🇷</title>
 <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 <link rel="stylesheet" href="{% static 'css/styles_indicators.css' %}">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Lato:wght@300;400;700&family=Nunito:wght@300;400;700&family=Quicksand:wght@300;500;700&family=Fredoka+One&display=swap" rel="stylesheet">
 </head>
+
+
 <body>
   <div class="top-bar">
     ⚠️ Exchange rate updates every hour. Stay informed! 📈
 </div>
-
-  <header>
-    <nav>
-      <a href="{% url 'economics' %}">Indicators</a>
-      <a href="{% url 'exchange-rate' %}">Exchange Rate (Banks)</a>
-      <a href="{% url 'loan-Calculations' %}">Loan Calculations</a>
-    </nav>
-    <div class="logo-container">
+<header>
+  <nav>
+    <a href="{% url 'economics' %}">Indicators</a>
+    <a href="{% url 'exchange-rate' %}">Exchange Rate (Banks)</a>
+    <a href="{% url 'loan-Calculations' %}">Loan Calculations</a>
+  </nav>
+  <div class="logo-container">
+    <a href="{% url 'index' %}">
       <img src="{% static 'index/images/flip_my_bucks_logo.png' %}" alt="Logo"> <!-- Replace with your image path -->
-    </div>
-  </header>
+    </a>
+  </div>
+</header>
   
 
 
@@ -137,16 +140,17 @@
 </article>
 
 <section class="info-section" id="contact-section">
-  <h2>Contact Us</h2>
-  <p>For any inquiries, please contact us at:</p>
-  <p>Email: example@example.com</p>
-  <p>Phone: +1234567890</p>
+  <h3>Enjoying flipmybucks? </h3>
+  <p>Support and help keep this service free! If you'd like to contribute, you can donate via PayPal or Buy Me a Coffee. Thank you! 🙏</p>
   <form action="https://www.paypal.com/donate" method="post" target="_top">
     {% csrf_token %}
     <input type="hidden" name="hosted_button_id" value="DDHHZEY2U6YHN" />
     <input class="paypal-button" type="image" src="https://pics.paypal.com/00/s/MGE4OGE1ODEtNzAyOS00YTAxLTlhMmQtNWI5NmVhZDZiNDRj/file.PNG" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
     <img alt="" border="0" src="https://www.paypal.com/en_CR/i/scr/pixel.gif" width="1" height="1" />
   </form>
+  <a href="https://www.buymeacoffee.com/franznica" target="_blank" class="buymeacoffee-icon">
+    <img src="{% static 'index/images/buymeacoffee.png' %}" alt="Buy Me a Coffee" />
+</a>
 </section>
 <footer>
   <p>&copy; 2024 All Rights Reserved</p>
