@@ -48,7 +48,7 @@
     font-size: 14px;
   }
   .table-container th {
-    background-color: #4a69bd;
+    background-color: #000000;
     color: #ffffff;
     font-size: 16px;
   }
@@ -57,7 +57,7 @@
   }
   #exchange-sell-table tbody tr:first-child,
   #exchange-buy-table tbody tr:first-child {
-    background-color: #78e08f;
+    background-color: #ffffff;
   }
   .table-container > div {
     width: 50%;

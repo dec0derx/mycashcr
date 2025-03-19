@@ -28,7 +28,7 @@ def banks_insights(banks_data):
 
     response = client.chat.completions.create(
         model="gpt-4o",
-        messages=[{"role": "user", "content": "Please analyze the latest news of exchange rate in Costa Rica and provide somehighlights. This will embedded in HTML so please use <p> and embedded subtitles in bold. Don't include anything other than <p> and <b> tags. Here is some information of the last month: " + str(banks_data)}]
+        messages=[{"role": "user", "content": " Use <p> and <b> tags in the answer. Who has the best exchange rate and what is your recommendation to tourists (use the value to the left - highest is better)? Here is a dictionary of the data for all banks: " + str(banks_data)}]
     )
     
     return response.choices[0].message.content

@@ -7,18 +7,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Iguana Rate 🇨🇷</title>
 <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Lato:wght@300;400;700&family=Nunito:wght@300;400;700&family=Quicksand:wght@300;500;700&family=Fredoka+One&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="top-bar">
+    ⚠️ Exchange rate updates every hour. Stay informed! 📈
+</div>
+
 <header>
-  <a href="{% url "index" %}">
-    <h1>Iguana Rate 🇨🇷</h1>
-  </a>
   <nav>
-    <a href="{% url "economics" %}">Indicators</a>
-    <a href="{% url "exchange-rate" %}">Exchange Rate (Banks)</a>
-    <a href="{% url "loan-Calculations" %}">Loan Calculations</a>
+    <a href="{% url 'economics' %}">Indicators</a>
+    <a href="{% url 'exchange-rate' %}">Exchange Rate (Banks)</a>
+    <a href="{% url 'loan-Calculations' %}">Loan Calculations</a>
   </nav>
+  <div class="logo-container">
+    <img src="{% static 'index/images/flip_my_bucks_logo.png' %}" alt="Logo"> <!-- Replace with your image path -->
+  </div>
 </header>
 
 <section class="info-section" id="info-section">
@@ -49,15 +53,6 @@
       <p>Calculate your monthly loan payment based on the amount, annual interest rate, and term in months.</p>
     </a>
   </div>
-  <!--
-  <div class="container">
-    <a href="{% url "salary-calculator" %}">
-      <h2>Salary Calculator</h2>
-      <img class="app-image" src="{% static "index/images/salary.png" %}" alt="Mountain Hiking"/>
-      <p>Calculate your Net Salary.</p>
-    </a>
-  </div>
-  -->
 </section>
 
 <section class="info-section" id="contact-section">
@@ -69,11 +64,9 @@
     <input class="paypal-button" type="image" src="https://pics.paypal.com/00/s/MGE4OGE1ODEtNzAyOS00YTAxLTlhMmQtNWI5NmVhZDZiNDRj/file.PNG" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
     <img alt="" border="0" src="https://www.paypal.com/en_CR/i/scr/pixel.gif" width="1" height="1" />
   </form>
+  <a href="https://www.buymeacoffee.com/yourusername" target="_blank">
+    <img src="https://cdn.buymeacoffee.com/buttons/default-blue.png" alt="Buy Me a Coffee" />
+  </a>
 </section>
-
-<footer>
-  <p>&copy; 2024 All Rights Reserved</p>
-</footer>
-
 </body>
 </html>

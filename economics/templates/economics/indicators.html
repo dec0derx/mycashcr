@@ -8,23 +8,27 @@
 <title>Iguana Rate 🇨🇷</title>
 <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 <link rel="stylesheet" href="{% static 'css/styles_indicators.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Lato:wght@300;400;700&family=Nunito:wght@300;400;700&family=Quicksand:wght@300;500;700&family=Fredoka+One&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="top-bar">
+    ⚠️ Exchange rate updates every hour. Stay informed! 📈
+</div>
 
   <header>
-    <a href="{% url "index" %}">
-      <h1>Iguana Rate 🇨🇷</h1>
-    </a>
     <nav>
-      <a href="{% url "economics" %}">Indicators</a>
-      <a href="{% url "exchange-rate" %}">Exchange Rate (Banks)</a>
-      <a href="{% url "loan-Calculations" %}">Loan Calculations</a>
+      <a href="{% url 'economics' %}">Indicators</a>
+      <a href="{% url 'exchange-rate' %}">Exchange Rate (Banks)</a>
+      <a href="{% url 'loan-Calculations' %}">Loan Calculations</a>
     </nav>
+    <div class="logo-container">
+      <img src="{% static 'index/images/flip_my_bucks_logo.png' %}" alt="Logo"> <!-- Replace with your image path -->
+    </div>
   </header>
+  
 
 
 <article class="indicators-section">
-  <h2>Data from CR Central Bank</h2>
   <div class="table-container">
     <div>
       <table id="exchange-sell-table">
