@@ -3,38 +3,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>flipmybucks 🇨🇷</title>
-<link rel="stylesheet" href="{% static 'css/styles.css' %}">
-<link rel="stylesheet" href="{% static 'css/styles_indicators.css' %}">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Lato:wght@300;400;700&family=Nunito:wght@300;400;700&family=Quicksand:wght@300;500;700&family=Fredoka+One&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>flipmybucks 🇨🇷</title>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'css/styles_indicators.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Lato:wght@300;400;700&family=Nunito:wght@300;400;700&family=Quicksand:wght@300;500;700&family=Fredoka+One&display=swap" rel="stylesheet">
 </head>
-
 
 <body>
   <div class="top-bar">
-    ⚠️ Exchange rate updates every hour. Stay informed! 📈
-</div>
-<header>
-  <nav>
-    <a href="{% url 'economics' %}">Indicators</a>
-    <a href="{% url 'exchange-rate' %}">Exchange Rate (Banks)</a>
-    <a href="{% url 'loan-Calculations' %}">Loan Calculations</a>
-  </nav>
-  <div class="logo-container">
-    <a href="{% url 'index' %}">
-      <img src="{% static 'index/images/flip_my_bucks_logo.png' %}" alt="Logo"> <!-- Replace with your image path -->
-    </a>
+    ⚠️ Real time exchange rate. Stay informed! 📈
   </div>
-</header>
-  
+  <header>
+    <nav>
+      <a href="{% url 'economics' %}">Exchange Rate</a>
+      <a href="{% url 'exchange-rate' %}">Commercial Banks</a>
+      <a href="{% url 'loan-Calculations' %}">Others</a>
+    </nav>
+    <div class="logo-container">
+      <a href="{% url 'index' %}">
+        <img src="{% static 'index/images/flip_my_bucks_logo.png' %}" alt="Logo"> <!-- Replace with your image path -->
+      </a>
+    </div>
+  </header>
 
+  <article class="indicators-section">
+    <div class="table-container">
+      <div>
+        <table id="exchange-sell-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Sell</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for exchange_rate in historical_exchange_rate_sell %}
+              {% if forloop.first %}
+                <tr>
+                  {% for date_exchange_rate in exchange_rate %}
+                    <td>{{ date_exchange_rate }}</td>
+                  {% endfor %}
+                </tr>
+              {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <table id="exchange-buy-table">
+          <thead>
+            <tr>
+              <th>Buy</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for exchange_rate in historical_exchange_rate_buy %}
+              {% if forloop.first %}
+                <tr>
+                  {% for date_exchange_rate in exchange_rate %}
+                    <td>{{ date_exchange_rate }}</td>
+                  {% endfor %}
+                </tr>
+              {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <canvas id="exchangeRateChart"></canvas>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          let labels = [];
+          let dataPoints = [];
+          {% for exchange_rate in historical_exchange_rate_sell %}
+            labels.push("{{ exchange_rate.0 }}");
+            dataPoints.push({{ exchange_rate.1 }});
+          {% endfor %}
+          labels.reverse();
+          dataPoints.reverse();
+          const ctx = document.getElementById("exchangeRateChart").getContext("2d");
+          new Chart(ctx, {
+            type: "line",
+            data: {
+              labels: labels,
+              datasets: [{
+                label: "Historical Exchange Rate",
+                data: dataPoints,
+                borderColor: "blue",
+                fill: false
+              }]
+            },
+            options: {
+              responsive: true,
+              scales: {
+                x: { title: { display: true, text: "Date" } },
+                y: { title: { display: true, text: "Exchange Rate" } }
+              }
+            }
+          });
+        });
+      </script>
+      <article class="indicators-summary">
+        <h2>Exchange Rate Summary</h2>
+        {{ exchange_rate_summary|safe}}
+      </article>
+    </div>
+  </article>
 
-<article class="indicators-section">
-  <div class="table-container">
-    <div>
-      <table id="exchange-sell-table">
+  <article class="indicators-section">
+    <h2>BCCR Reserves</h2>
+    <div class="table-container">
+      <table id="bccr-reserves">
         <thead>
           <tr>
             <th>Date</th>
@@ -42,118 +123,33 @@
           </tr>
         </thead>
         <tbody>
-          {% for exchange_rate in historical_exchange_rate_sell %}
-          {% if forloop.first %}
+          {% for reserve in usd_reserves %}
             <tr>
-              {% for date_exchange_rate in exchange_rate %}
-                <td>{{ date_exchange_rate }}</td>
+              {% for usd in reserve %}
+                <td>{{ usd }}</td>
               {% endfor %}
             </tr>
-          {% endif %}
-        {% endfor %}
+          {% endfor %}
         </tbody>
       </table>
     </div>
-    <div>
-      <table id="exchange-buy-table">
-        <thead>
-          <tr>
-            <th>Buy</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for exchange_rate in historical_exchange_rate_buy %}
-          {% if forloop.first %}
-            <tr>
-              {% for date_exchange_rate in exchange_rate %}
-                <td>{{ date_exchange_rate }}</td>
-              {% endfor %}
-            </tr>
-          {% endif %}
-        {% endfor %}
-        </tbody>
-      </table>
-    </div>
-    <canvas id="exchangeRateChart"></canvas>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        let labels = [];
-        let dataPoints = [];
-        {% for exchange_rate in historical_exchange_rate_sell %}
-          labels.push("{{ exchange_rate.0 }}");
-          dataPoints.push({{ exchange_rate.1 }});
-        {% endfor %}
-        labels.reverse();
-        dataPoints.reverse();
-        const ctx = document.getElementById("exchangeRateChart").getContext("2d");
-        new Chart(ctx, {
-          type: "line",
-          data: {
-            labels: labels,
-            datasets: [{
-              label: "Historical Exchange Rate",
-              data: dataPoints,
-              borderColor: "blue",
-              fill: false
-            }]
-          },
-          options: {
-            responsive: true,
-            scales: {
-              x: { title: { display: true, text: "Date" } },
-              y: { title: { display: true, text: "Exchange Rate" } }
-            }
-          }
-        });
-      });
-    </script>
-    <article class="indicators-summary">
-      <h2>Exchange Rate Summary</h2>
-      {{ exchange_rate_summary|safe}}
-    </article>
+  </article>
 
-  </div>
-</article>
-
-<article class="indicators-section">
-  <h2>BCCR Reserves</h2>
-  <div class="table-container">
-    <table id="bccr-reserves">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Sell</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for reserve in usd_reserves %}
-          <tr>
-            {% for usd in reserve %}
-              <td>{{ usd }}</td>
-            {% endfor %}
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-</article>
-
-<section class="info-section" id="contact-section">
-  <h3>Enjoying flipmybucks? </h3>
-  <p>Support and help keep this service free! If you'd like to contribute, you can donate via PayPal or Buy Me a Coffee. Thank you! 🙏</p>
-  <form action="https://www.paypal.com/donate" method="post" target="_top">
-    {% csrf_token %}
-    <input type="hidden" name="hosted_button_id" value="DDHHZEY2U6YHN" />
-    <input class="paypal-button" type="image" src="https://pics.paypal.com/00/s/MGE4OGE1ODEtNzAyOS00YTAxLTlhMmQtNWI5NmVhZDZiNDRj/file.PNG" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-    <img alt="" border="0" src="https://www.paypal.com/en_CR/i/scr/pixel.gif" width="1" height="1" />
-  </form>
-  <a href="https://www.buymeacoffee.com/franznica" target="_blank" class="buymeacoffee-icon">
-    <img src="{% static 'index/images/buymeacoffee.png' %}" alt="Buy Me a Coffee" />
-</a>
-</section>
-<footer>
-  <p>&copy; 2024 All Rights Reserved</p>
-</footer>
+  <section class="info-section" id="contact-section">
+    <h3>Enjoying flipmybucks? </h3>
+    <p>Support and help keep this service free! If you'd like to contribute, you can donate via PayPal or Buy Me a Coffee. Thank you! 🙏</p>
+    <form action="https://www.paypal.com/donate" method="post" target="_top">
+      {% csrf_token %}
+      <input type="hidden" name="hosted_button_id" value="DDHHZEY2U6YHN" />
+      <input class="paypal-button" type="image" src="https://pics.paypal.com/00/s/MGE4OGE1ODEtNzAyOS00YTAxLTlhMmQtNWI5NmVhZDZiNDRj/file.PNG" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+      <img alt="" border="0" src="https://www.paypal.com/en_CR/i/scr/pixel.gif" width="1" height="1" />
+    </form>
+    <a href="https://www.buymeacoffee.com/franznica" target="_blank" class="buymeacoffee-icon">
+      <img src="{% static 'index/images/buymeacoffee.png' %}" alt="Buy Me a Coffee" />
+    </a>
+  </section>
+  <footer>
+    <p>&copy; 2025 All Rights Reserved</p>
+  </footer>
 </body>
 </html>

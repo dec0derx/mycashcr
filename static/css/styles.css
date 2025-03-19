@@ -14,7 +14,7 @@ body {
 .top-bar {
   width: 100%;
   font-size: 11.5px;
-  background-color: #4d7f01; 
+  background-color: #1DB954; 
   color: #333; /* Dark text for visibility */
   text-align: center;
   padding: 8px 0;
@@ -169,7 +169,7 @@ form input[type="image"] {
 }
 
 footer {
-  background-color: #4d7f01;
+  background-color: #1DB954;
   color: #fff;
   text-align: center;
   padding: 20px;

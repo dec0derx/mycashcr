@@ -11,14 +11,14 @@
 </head>
 <body>
   <div class="top-bar">
-    ⚠️ Exchange rate updates every hour. Stay informed! 📈
+    ⚠️ Real time exchange rate. Stay informed! 📈
 </div>
 
 <header>
   <nav>
-    <a href="{% url 'economics' %}">Indicators</a>
-    <a href="{% url 'exchange-rate' %}">Exchange Rate (Banks)</a>
-    <a href="{% url 'loan-Calculations' %}">Loan Calculations</a>
+    <a href="{% url 'economics' %}">Exchange Rate</a>
+    <a href="{% url 'exchange-rate' %}">Commercial Banks</a>
+    <a href="{% url 'loan-Calculations' %}">Others</a>
   </nav>
   <div class="logo-container">
     <img src="{% static 'index/images/flip_my_bucks_logo.png' %}" alt="Logo"> <!-- Replace with your image path -->
@@ -36,14 +36,14 @@
     <a href="{% url "economics" %}">
       <h2>Economic Indicators</h2>
       <img class="app-image" src="{% static "index/images/banking.png" %}" alt="Economic Indicators"/>
-      <p>Tracking the economic indicators of the Central Bank of Costa Rica.</p>
+      <p>Tracking the exchange rate from the Central Bank of Costa Rica.</p>
     </a>
   </div>
   <div class="container">
     <a href="{% url "exchange-rate" %}">
       <h2>Exchange Rate</h2>
       <img class="app-image" src="{% static "index/images/exchange_rate.png" %}" alt="Exchange Rate (Commercial Banks)"/>
-      <p>Dollar exchange rate in the different financial entities of Costa Rica.</p>
+      <p>Dollar exchange rate in financial entities of Costa Rica.</p>
     </a>
   </div>
   <div class="container">
@@ -68,5 +68,8 @@
     <img src="{% static 'index/images/buymeacoffee.png' %}" alt="Buy Me a Coffee" />
 </a>
 </section>
+<footer>
+  <p>&copy; 2025 All Rights Reserved</p>
+</footer>
 </body>
 </html>

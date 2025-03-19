@@ -28,7 +28,7 @@ def banks_insights(banks_data):
 
     response = client.chat.completions.create(
         model="gpt-4o",
-        messages=[{"role": "user", "content": " Use <p> and <b> tags in the answer. Who has the best exchange rate and what is your recommendation to tourists (use the value to the left - highest is better)? Here is a dictionary of the data for all banks: " + str(banks_data)}]
+        messages=[{"role": "user", "content": " Use <p> and <b> tags in the answer. The first value is the buy rate in the bank and the second one is the sell value. Who has the best exchange rate and what is your recommendation to tourists (use the value to the left - highest is better)? Here is a dictionary of the data for all banks: " + str(banks_data)}]
     )
     
     return response.choices[0].message.content

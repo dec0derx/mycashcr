@@ -3,155 +3,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iguana Rate 🇨🇷</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-    header {
-      background-color: #2C3E50;
-      color: #fff;
-      padding: 20px 0;
-      text-align: center;
-    }
-    header a, header a:visited {
-      color: #fff; /* Keeps the header text color white even after being visited */
-      text-decoration: none;
-    }
-  
-    header a:hover {
-      color: #fff; /* Ensures the color remains white on hover as well */
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 10px;
-    }
-    section {
-      padding: 20px;
-      margin-bottom: 20px;
-    }
-    .info-section {
-      background-color: #f2f2f2;
-      border-radius: 5px;
-      text-align: center; /* Align text to center */
-    }
-    #apps-section {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      grid-gap: 20px;
-    }
-    .container {
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      padding: 20px;
-      transition: background-color 0.3s;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-    .container a {
-      color: inherit; /* Override default link color */
-      text-decoration: none; /* Remove underline */
-    }
-    .container:hover {
-      background-color: #f9f9f9;
-      cursor: pointer;
-    }
-    footer {
-      background-color: black;
-      color: #fff;
-      text-align: center;
-      padding: 10px;
-      margin-top: auto;
-    }
-    #contact-section {
-      margin-bottom: -20px; /* Adjust to match footer margin */
-    }
-
-    header a {
-      color: inherit; /* Use the color defined for the header */
-      text-decoration: none; /* Remove underline */
-    }
-
-    header a:hover {
-      color: inherit; /* Use the color defined for the header */
-      text-decoration: none; /* Remove underline */
-    }
-
-    .paypal-button {
-      width: 180px;
-    }
-    .app-image {
-      width: 5rem;
-      height: 5rem;
-      object-fit: cover;
-    }
-
-    /* Styling for the loan calculator */
-    .loan-calculator {
-      background-color: #f9f9f9;
-      border-radius: 5px;
-      padding: 20px;
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-      margin-top: 20px;
-      width: 100%;
-      max-width: 600px;
-      margin: 20px auto;
-    }
-
-    .loan-calculator h2 {
-      text-align: center;
-      color: #1A2954;
-    }
-
-    .loan-calculator label {
-      display: block;
-      margin-bottom: 10px;
-      font-weight: bold;
-    }
-
-    .loan-calculator input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-    }
-
-    .loan-calculator #result {
-      text-align: center;
-      font-size: 18px;
-      margin-top: 20px;
-    }
-
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>flipmybucks 🇨🇷</title>
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<link rel="stylesheet" href="{% static 'css/styles_others.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Lato:wght@300;400;700&family=Nunito:wght@300;400;700&family=Quicksand:wght@300;500;700&family=Fredoka+One&display=swap" rel="stylesheet">
 </head>
 <body>
-
-  <header>
-    <a href="{% url "index" %}">
-      <h1>Iguana Rate 🇨🇷</h1>
+  <div class="top-bar">
+    ⚠️ Real time exchange rate. Stay informed! 📈
+</div>
+<header>
+  <nav>
+    <a href="{% url 'economics' %}">Exchange Rate</a>
+    <a href="{% url 'exchange-rate' %}">Commercial Banks</a>
+    <a href="{% url 'loan-Calculations' %}">Others</a>
+  </nav>
+  <div class="logo-container">
+    <a href="{% url 'index' %}">
+      <img src="{% static 'index/images/flip_my_bucks_logo.png' %}" alt="Logo"> <!-- Replace with your image path -->
     </a>
-    <nav>
-      <a href="{% url "economics" %}">Indicators</a>
-      <a href="{% url "exchange-rate" %}">Exchange Rate (Banks)</a>
-      <a href="{% url "loan-Calculations" %}">Loan Calculations</a>
-    </nav>
-  </header>
+  </div>
+</header>
 
 <!-- Loan Calculator Section -->
 <section class="loan-calculator">
@@ -168,23 +42,23 @@
   <div id="result"></div>
 </section>
 
-<!-- Contact Us Section -->
 <section class="info-section" id="contact-section">
-  <h2>Contact Us</h2>
-  <p>For any inquiries, please contact us at:</p>
-  <p>Email: example@example.com</p>
-  <p>Phone: +1234567890</p>
+  <h3>Enjoying flipmybucks? </h3>
+  <p>Support and help keep this service free! If you'd like to contribute, you can donate via PayPal or Buy Me a Coffee. Thank you! 🙏</p>
   <form action="https://www.paypal.com/donate" method="post" target="_top">
     {% csrf_token %}
     <input type="hidden" name="hosted_button_id" value="DDHHZEY2U6YHN" />
     <input class="paypal-button" type="image" src="https://pics.paypal.com/00/s/MGE4OGE1ODEtNzAyOS00YTAxLTlhMmQtNWI5NmVhZDZiNDRj/file.PNG" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
     <img alt="" border="0" src="https://www.paypal.com/en_CR/i/scr/pixel.gif" width="1" height="1" />
   </form>
+  <a href="https://www.buymeacoffee.com/franznica" target="_blank" class="buymeacoffee-icon">
+    <img src="{% static 'index/images/buymeacoffee.png' %}" alt="Buy Me a Coffee" />
+  </a>
 </section>
-
 <footer>
   <p>&copy; 2024 All Rights Reserved</p>
 </footer>
+
 
 <script>
   function calculateLoan() {
@@ -204,6 +78,7 @@
     document.getElementById('result').innerHTML = `Your monthly payment is: $${monthlyPayment.toFixed(2)}`;
   }
 </script>
+
 
 </body>
 </html>
