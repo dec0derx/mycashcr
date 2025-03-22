@@ -3,6 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 from utils import openai_requests
 
+
 # Create your views here.
 
 def exchange_rate(request):
@@ -39,16 +40,17 @@ def get_commercial_banks_exchange_rate():
         buy_price = cell_values[3]
         sell_price = cell_values[4]
 
+
         bank_detail_list.append(bank.strip())
         bank_detail_list.append(buy_price.strip())
         bank_detail_list.append(sell_price.strip())
+
 
         banks_exchange_rate_dictionary.append(bank_detail_list)
 
         #print(banks_exchange_rate_dictionary)
     banks_exchange_rate_dictionary.pop(0)
     return banks_exchange_rate_dictionary
-
 
         
 

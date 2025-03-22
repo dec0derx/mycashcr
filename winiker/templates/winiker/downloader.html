@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Video Downloader</title>
+</head>
+<body>
+    <h1>Enter the URL of the video to download</h1>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <label for="video_url">Video URL:</label>
+        <input type="text" id="video_url" name="video_url" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if video_url %}
+        <p>You entered: {{ video_url }}</p>
+    {% endif %}
+</body>
+</html>

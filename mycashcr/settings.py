@@ -35,6 +35,7 @@ ALLOWED_HOSTS = [
 
 INSTALLED_APPS = [
     'index',
+    "winiker", 
     'economics',
     'exchangeRateCR',
     'loanCalculations',
