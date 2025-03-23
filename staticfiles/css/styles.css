@@ -11,19 +11,7 @@ body {
 }
 
 /* Top Bar */
-.top-bar {
-  width: 100%;
-  font-size: 11.5px;
-  background-color: #4d7f01; 
-  color: #333; /* Dark text for visibility */
-  text-align: center;
-  padding: 8px 0;
-  font-weight: bold;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-}
+
 /* Header */
 header {
   background-color: #ffffff;
@@ -124,6 +112,11 @@ section {
   padding: 20px;
 }
 
+.buymeacoffee-icon img {
+  width: 120px; /* Adjust as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
 .container {
   background-color: #fff;
   border: 1px solid #ddd;
@@ -164,7 +157,7 @@ form input[type="image"] {
 }
 
 footer {
-  background-color: #2C3E50;
+  background-color: #1DB954;
   color: #fff;
   text-align: center;
   padding: 20px;

@@ -1,0 +1,23 @@
+.loan-calculator {
+  max-width: 400px; /* Adjust width as needed */
+  margin: 0 auto; /* Center the section */
+  padding: 20px;
+}
+
+.loan-calculator label {
+  display: block; /* Stack labels above inputs */
+  text-align: left; /* Align labels to the left */
+  font-weight: bold;
+  margin-bottom: 5px; /* Adds spacing between label and input */
+}
+
+.loan-calculator input {
+  display: block; /* Ensures inputs are stacked */
+  width: 300px; /* Makes inputs take full width */
+  max-width: 400px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px; /* Adds spacing between inputs */
+}
