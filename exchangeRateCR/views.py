@@ -1,16 +1,39 @@
 from django.shortcuts import render
+from django.utils import timezone
+
 import requests
 from bs4 import BeautifulSoup
 from utils import openai_requests
+from .models import BanksInsight
 
 
 # Create your views here.
 
 def exchange_rate(request):
     banks_exchange_rate_dictionary = get_commercial_banks_exchange_rate()
-    banks_data_sumary = openai_requests.banks_insights(banks_exchange_rate_dictionary)
+
+    header = ["Institution", "Buy Rate", "Sell Rate"]
+
+    # Insert the header at the beginning of the list
+    banks_exchange_rate_dictionary.insert(0, header)
+
+    current_date = timezone.now().date()
+
+    # Query the ExchangeRateSummary model by the current date
+    insights = BanksInsight.objects.filter(date=current_date).first()
+
+    # If no summary exists for the current date, create a new one
+    if not insights:
+        insights_text = openai_requests.banks_insights(banks_exchange_rate_dictionary)
+        insights = BanksInsight.objects.create(insight=insights_text)
+    else:
+        insights_text = insights.insight
+
+    banks_exchange_rate_dictionary.remove(header)
+    print("\n")
+
     args = {'banks_exchange_rate_dictionary': banks_exchange_rate_dictionary,
-            'banks_data_sumary': banks_data_sumary}
+            'banks_data_sumary': insights_text}
     return render(request, "exchangeRateCR/exchange_rate.html", args)
 
 def get_commercial_banks_exchange_rate():

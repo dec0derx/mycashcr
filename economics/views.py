@@ -15,7 +15,6 @@ def indicators(request):
     usd_reserves = get_usd_reserves()
     
     # Analyze with AI to create summary
-
     # Get the current date
     current_date = timezone.now().date()
 
