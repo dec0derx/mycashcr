@@ -17,6 +17,10 @@ def index(request):
 
     return render(request, "index/index.html")
 
+def feedback(request):
+    feedback = "feedback test"
+    return render(request, "index/feedback.html", {"feedback": feedback})
+
 
 def get_user_ip(request):
     user_ip = request.META.get('HTTP_X_FORWARDED_FOR')
