@@ -36,14 +36,12 @@
             </tr>
           </thead>
           <tbody>
-            {% for exchange_rate in historical_exchange_rate_sell %}
-              {% if forloop.first %}
+            {% for exchange_rate in historical_exchange_rate_sell|slice:":5"%}
                 <tr>
                   {% for date_exchange_rate in exchange_rate %}
                     <td>{{ date_exchange_rate }}</td>
                   {% endfor %}
                 </tr>
-              {% endif %}
             {% endfor %}
           </tbody>
         </table>
@@ -56,14 +54,12 @@
             </tr>
           </thead>
           <tbody>
-            {% for exchange_rate in historical_exchange_rate_buy %}
-              {% if forloop.first %}
+            {% for exchange_rate in historical_exchange_rate_buy|slice:":5" %}
                 <tr>
                   {% for date_exchange_rate in exchange_rate %}
                     <td>{{ date_exchange_rate }}</td>
                   {% endfor %}
                 </tr>
-              {% endif %}
             {% endfor %}
           </tbody>
         </table>
