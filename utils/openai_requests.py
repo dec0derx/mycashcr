@@ -32,10 +32,8 @@ def banks_insights(banks_data):
 
     response = client.chat.completions.create(
         model="gpt-4o",
-        messages=[{"role": "user", "content": " Use <p> and <b> tags in the answer. Please do it in one or 2 paragraphs and don't use bullet points."
-        "Choose the top three entities and analyze their values. Also choose the two with least favorable offer."
-        "Who has the best exchange rate and what is your recommendation to tourists and people who most of their income is"
-        " in USD. Here is a dictionary of the data for all banks: " + str(banks_data)}]
+        messages=[{"role": "user", "content": " Use <p> and <b> tags in the answer and don't use bullet points. Select the 2 most competitive entities and check with has the highest buy rate and the one with the lowest sell rate."
+        " Here is a list of lists of the data for all banks: " + str(banks_data)}]
     )
     
     return response.choices[0].message.content
