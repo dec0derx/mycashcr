@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from . import download_video
+from utils import youtube
 
 def home(request):
     args = {"name": "Franz"}  
@@ -12,7 +12,7 @@ def downloader(request):
     if request.method == 'POST':
         video_url = request.POST.get('video_url')  # Capture the URL entered in the form
         print(video_url)    
-        download_video.download_video(video_url)
+        youtube.download_single_video(video_url, destination_path="/Users/franz/Music/")
         return HttpResponse("Download is completed")
     return render(request, "winiker/downloader.html", args)
 
