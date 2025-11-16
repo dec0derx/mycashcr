@@ -12,7 +12,7 @@ def downloader(request):
     if request.method == 'POST':
         video_url = request.POST.get('video_url')  # Capture the URL entered in the form
         print(video_url)    
-        youtube.download_single_video(video_url, destination_path="/Users/franz/Music/")
+        youtube.download_single_video(video_url, destination_path="/tmp/")
         return HttpResponse("Download is completed")
     return render(request, "winiker/downloader.html", args)
 

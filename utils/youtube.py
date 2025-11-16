@@ -2,7 +2,7 @@ import os
 import yt_dlp
 
 
-def download_single_video(url, destination_path="/Users/franz/Music/"):
+def download_single_video(url, destination_path="/tmp/"):
     """
     Download a single YouTube video as MP3.
     """
