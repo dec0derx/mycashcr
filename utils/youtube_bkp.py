@@ -2,19 +2,18 @@ import os
 import yt_dlp
 
 
-def download_single_video(url, destination_path="/tmp/", cookies_path="/tmp/cookies.txt"):
+def download_single_video(url, destination_path="/tmp/"):
     """
-    Download a single YouTube video as MP3 using cookies for authentication.
+    Download a single YouTube video as MP3.
     """
     assert os.path.exists(destination_path), f"Invalid path '{destination_path}'"
-    assert os.path.exists(cookies_path), f"Cookies file not found: {cookies_path}"
 
+    # Output file path
     out_path = os.path.join(destination_path, "%(title)s.%(ext)s")
 
     ydl_opts = {
         "format": "bestaudio/best",
         "outtmpl": out_path,
-        "cookies": cookies_path,          # <-- REQUIRED for servers
         "postprocessors": [
             {
                 "key": "FFmpegExtractAudio",
@@ -28,3 +27,7 @@ def download_single_video(url, destination_path="/tmp/", cookies_path="/tmp/cook
         ydl.download([url])
 
     print(f"✅ MP3 downloaded to: {destination_path}")
+
+
+# Example usage:
+# download_single_video("https://music.youtube.com/watch?v=y7XZibMcyRc&si=0Rtq97mBOYn2bh93")
