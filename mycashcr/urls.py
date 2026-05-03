@@ -27,5 +27,4 @@ urlpatterns = [
     path("exchangeRateCR/", include("exchangeRateCR.urls")),
     path("economics/", include("economics.urls")),
     path("salaryCalculator/", include("salaryCalculator.urls")),
-    path("winiker/", include("winiker.urls"))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
