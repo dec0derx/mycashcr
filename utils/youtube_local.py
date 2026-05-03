@@ -30,4 +30,4 @@ def download_single_video(url, destination_path="/tmp/"):
 
 
 # Example usage:
-# download_single_video("https://music.youtube.com/watch?v=y7XZibMcyRc&si=0Rtq97mBOYn2bh93")
+download_single_video(input("Enter YouTube video URL: "), destination_path="/Users/franz/Music")
